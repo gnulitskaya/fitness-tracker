@@ -1,12 +1,12 @@
-<form class="example-form" fxLayout="column" fxLayoutAlign="center center">
+<form class="example-form" fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
   <mat-form-field>
-    <input matInput placeholder="Your email" type='email'>
+    <input matInput placeholder="Your email" type='email' name='email' formControlName='email' required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Your password" type='password'>
+    <input matInput placeholder="Your password" type='password' name='password' formControlName='password' required>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type='submit'>Submit</button>
+  <button mat-raised-button color="primary" type='submit' [disabled]="loginForm.invalid">Submit</button>
 
 </form>

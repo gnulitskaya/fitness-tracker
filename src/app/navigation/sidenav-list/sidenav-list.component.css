@@ -1,0 +1,18 @@
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: grey;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-caption {
+  padding-right: 10px;
+}
