@@ -1,3 +1,4 @@
+import { TrainingService } from './training/training.service';
 import { AuthService } from './auth/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -43,7 +44,7 @@ import { StopTrainingComponent } from './training/current-training/stop-training
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, TrainingService],
   bootstrap: [AppComponent],
   entryComponents: [StopTrainingComponent]
 })
