@@ -7,7 +7,7 @@
           <mat-label>Select type</mat-label>
           <mat-select ngModel name="exercise" required>
 
-            <mat-option *ngFor="let exercise of exercises" [value]="exercise.name">
+            <mat-option *ngFor="let exercise of exercises" [value]="exercise.id">
               {{exercise.name}}
             </mat-option>
 
