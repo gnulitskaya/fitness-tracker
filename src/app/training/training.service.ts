@@ -9,14 +9,14 @@ import { map } from 'rxjs/operators';
 export class TrainingService {
   exerciseChanged = new Subject<Exercise | null>();
   exercisesChanged = new Subject<Exercise[] | null>();
-
+  finishedExercisesChanged = new Subject<Exercise[] | null>();
   constructor(private db: AngularFirestore) {}
 
   private availableExercises: Exercise[] = [];
 
   //store the exercise which the user selected
   private runningExercise?: Exercise | null;
-  private exercises: Exercise[] = [];
+
   fetchAvailableExercises(){
     this.db
     .collection('availableExercises')
@@ -77,9 +77,14 @@ export class TrainingService {
     return {...this.runningExercise};
   }
 
-  getCompletedOrCancelledExercises() {
-    return this.exercises.slice();
-  }
+  fetchCompletedOrCancelledExercises() {
+    this.db
+    .collection('finishedExercises')
+    .valueChanges()
+    .subscribe((exercises) => {
+      this.finishedExercisesChanged.next(exercises as Exercise[]);
+    });
+    }
 
   private addDataToDatabase(exercise: Exercise) {
     this.db.collection('finishedExercises').add(exercise);
