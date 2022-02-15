@@ -1,3 +1,4 @@
+import { UIService } from './../shared/ui.service';
 import { Exercise } from './exercise.module';
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
@@ -11,7 +12,8 @@ export class TrainingService {
   exercisesChanged = new Subject<Exercise[] | null>();
   finishedExercisesChanged = new Subject<Exercise[] | null>();
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore,
+    private uiService: UIService) {}
 
   private availableExercises: Exercise[] = [];
 
@@ -20,6 +22,7 @@ export class TrainingService {
   private fbSubs: Subscription[] = [];
 
   fetchAvailableExercises(){
+    this.uiService.loadingStateChanged.next(true);
     this.fbSubs.push(this.db
     .collection('availableExercises')
     .snapshotChanges()
@@ -35,6 +38,7 @@ export class TrainingService {
     )
     .subscribe((exercises: Exercise[]) => {
       console.log(exercises)
+      this.uiService.loadingStateChanged.next(false);
       this.availableExercises = exercises;
       this.exercisesChanged.next([...this.availableExercises]);
     }));

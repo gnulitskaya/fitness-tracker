@@ -27,6 +27,6 @@
   </mat-form-field>
   <mat-checkbox class="example-margin" ngModel name="agree" required>Check me!</mat-checkbox>
 
-  <button mat-raised-button color="primary" type='submit' [disabled]="f.invalid">Submit</button>
-
+  <button *ngIf="!isLoading" mat-raised-button color="primary" type='submit' [disabled]="f.invalid">Submit</button>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
 </form>
