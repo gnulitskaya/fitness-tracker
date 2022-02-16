@@ -6,7 +6,6 @@ import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 
@@ -17,7 +16,6 @@ export class AuthService {
   constructor(private router: Router,
     private afAuth: AngularFireAuth,
     private trainingService: TrainingService,
-    private snackbar: MatSnackBar,
     private uiService: UIService) {}
 
   initAuthListener() {
@@ -43,9 +41,7 @@ export class AuthService {
     })
     .catch(error => {
       this.uiService.loadingStateChanged.next(false);
-      this.snackbar.open(error.message, undefined, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(error.message, null, 3000);
     })
     // this.user = {
     //   email: authData.email,
@@ -64,9 +60,7 @@ export class AuthService {
     })
     .catch(error => {
       this.uiService.loadingStateChanged.next(false);
-      this.snackbar.open(error.message, undefined, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(error.message, null, 3000);
     })
     // this.user = {
     //   email: authData.email,
