@@ -25,6 +25,7 @@ export class SignComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.loadingSub)
     this.loadingSub?.unsubscribe();
   }
 

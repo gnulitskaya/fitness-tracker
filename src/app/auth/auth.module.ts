@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { SignComponent } from './sign/sign.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [SignComponent,
@@ -13,7 +14,8 @@ import { SignComponent } from './sign/sign.component';
   FormsModule,
   ReactiveFormsModule,
   MaterialModule,
-  FlexLayoutModule],
+  FlexLayoutModule,
+  AngularFireAuthModule],
   exports: []
 })
 
