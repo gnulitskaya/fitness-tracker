@@ -6,3 +6,7 @@ a {
 a:hover {
   color: grey;
 }
+
+li {
+  list-style: none;
+}
