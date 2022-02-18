@@ -15,8 +15,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { AngularFireModule  } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
 import { AuthModule } from './auth/auth.module';
-import { FormsModule } from '@angular/forms';
-import { TrainingModule } from './training/training.module';
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +31,8 @@ import { TrainingModule } from './training/training.module';
     AppRoutingModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule,
     AuthModule,
-    TrainingModule
+    AngularFirestoreModule,
   ],
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent]
