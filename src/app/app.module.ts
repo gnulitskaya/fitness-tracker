@@ -6,16 +6,16 @@ import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule  } from '@angular/fire/compat'
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { AngularFireModule  } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
 import { AuthModule } from './auth/auth.module';
-import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 @NgModule({
   declarations: [
