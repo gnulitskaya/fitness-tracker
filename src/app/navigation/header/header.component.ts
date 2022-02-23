@@ -11,15 +11,12 @@ import { Store } from '@ngrx/store';
 })
 export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
-  isAuth$?: Observable<boolean>;
+  isAuth$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>,
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    // this.authSubscription = this.authService.authChange.subscribe( authStatus => {
-    //   this.isAuth = authStatus;
-    // })
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
   }
 

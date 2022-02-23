@@ -12,7 +12,7 @@ import * as fromRoot from '../../app.reducer';
 })
 export class SignComponent implements OnInit {
   maxDate = new Date();
-  isLoading$?: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   constructor(private authService: AuthService,
     private store: Store<fromRoot.State>) { }

@@ -18,9 +18,6 @@ export class SidenavListComponent implements OnInit {
 
   ngOnInit() {
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
-    // this.authSubscription = this.authService.authChange.subscribe( authState => {
-    //   this.isAuth = authState;
-    // })
   }
 
   onClose() {

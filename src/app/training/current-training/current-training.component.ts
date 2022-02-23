@@ -1,4 +1,3 @@
-import { Exercise } from './../exercise.module';
 import { Store } from '@ngrx/store';
 import { TrainingService } from './../training.service';
 import { StopTrainingComponent } from './stop-training.component';
