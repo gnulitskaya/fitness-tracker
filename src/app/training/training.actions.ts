@@ -27,7 +27,7 @@ export class SetFinishedTraining implements Action {
 export class StartTraining implements Action {
   readonly type = START_TRAININGS;
 
-  constructor(public payload: Exercise[]) {
+  constructor(public payload: string) {
 
   }
 }
