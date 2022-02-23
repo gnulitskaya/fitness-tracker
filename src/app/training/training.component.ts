@@ -25,7 +25,7 @@ export class TrainingComponent implements OnInit {
     //       this.ongoingTraining = false;
     //     }
     // });
-    this.ongoingTraining$ = this.store.select(fromTraining.getIsExercises);
+    this.ongoingTraining$ = this.store.select(fromTraining.getIsTraining);
   }
 
 

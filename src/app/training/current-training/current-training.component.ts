@@ -25,7 +25,7 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   startOrResumeTimer() {
-    this.store.select(fromTraining.getActiveExercises).pipe(take(1)).subscribe(ex => {
+    this.store.select(fromTraining.getActiveTraining).pipe(take(1)).subscribe(ex => {
       const step = ex.duration / 100 * 1000;
     this.timer = setInterval(() => {
       this.progress = this.progress + 5;

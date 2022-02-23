@@ -12,7 +12,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 export interface TrainingState {
   availableExercises: Exercise[],
   finishedExercises: Exercise[],
-  activeExercises: Exercise,
+  activeTraining: Exercise,
 }
 
 //our app state doesnt know about the training state,
@@ -26,7 +26,7 @@ export interface State extends fromRoot.State{
 const initialState: TrainingState = {
   availableExercises: [],
   finishedExercises: [],
-  activeExercises: null
+  activeTraining: null
 }
 
 //dispatch actions to change the store
@@ -38,7 +38,7 @@ export function trainingReducer(state = initialState, action: TrainingActions) {
         //distribute the old state properties
         ...state,
         //override whta you have to change
-        activeExercises: action.payload
+        availableExercises: action.payload
       }
     case SET_FINISHED_TRAININGS:
       return {
@@ -48,7 +48,7 @@ export function trainingReducer(state = initialState, action: TrainingActions) {
     case START_TRAININGS:
       return {
         ...state,
-        activeExercises: {...state.availableExercises.find(ex => ex.id === action.payload)}
+        activeTraining: {...state.availableExercises.find(ex => ex.id === action.payload)}
       }
     case STOP_TRAININGS:
       return {
@@ -65,6 +65,5 @@ export const getTrainingState = createFeatureSelector<TrainingState>('training')
 
 export const getAvailableExercises = createSelector(getTrainingState, (state: TrainingState) => state.availableExercises);
 export const getFinishedExercises = createSelector(getTrainingState, (state: TrainingState) => state.finishedExercises);
-export const getActiveExercises = createSelector(getTrainingState, (state: TrainingState) => state.activeExercises);
-export const getIsExercises = createSelector(getTrainingState, (state: TrainingState) => state.activeExercises != null);
-
+export const getActiveTraining = createSelector(getTrainingState, (state: TrainingState) => state.activeTraining);
+export const getIsTraining = createSelector(getTrainingState, (state: TrainingState) => state.activeTraining != null);

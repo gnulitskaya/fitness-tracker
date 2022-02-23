@@ -67,7 +67,7 @@ export class TrainingService {
   }
 
   completeExercise() {
-    this.store.select(fromTraining.getActiveExercises).pipe(take(1)).subscribe(ex => {
+    this.store.select(fromTraining.getActiveTraining).pipe(take(1)).subscribe(ex => {
 
       this.addDataToDatabase({
         ...ex,
@@ -82,7 +82,7 @@ export class TrainingService {
   }
 
   cancelExercise(progress: number) {
-    this.store.select(fromTraining.getActiveExercises).pipe(take(1)).subscribe(ex => {
+    this.store.select(fromTraining.getActiveTraining).pipe(take(1)).subscribe(ex => {
       this.addDataToDatabase({
         ...ex,
         duration: ex.duration * (progress / 100),
@@ -98,9 +98,9 @@ export class TrainingService {
     this.fbSubs.push(this.db
     .collection('finishedExercises')
     .valueChanges()
-    .subscribe((exercises) => {
+    .subscribe((exercises: Exercise[]) => {
       // this.finishedExercisesChanged.next(exercises as Exercise[]);
-      this.store.dispatch(new Training.SetFinishedTraining(exercises as Exercise[]));
+      this.store.dispatch(new Training.SetFinishedTraining(exercises));
     }));
     }
 
