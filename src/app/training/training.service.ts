@@ -3,9 +3,9 @@ import { Exercise } from './exercise.module';
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import * as UI from '../shared/ui.actions';
-import * as fromеTraining from './training.reducer';
+import * as fromTraining from './training.reducer';
 import * as Training from './training.actions';
 import { Store } from '@ngrx/store';
 
@@ -18,7 +18,7 @@ export class TrainingService {
 
   constructor(private db: AngularFirestore,
     private uiService: UIService,
-    private store: Store<fromеTraining.State>) {}
+    private store: Store<fromTraining.State>) {}
 
   private availableExercises: Exercise[] = [];
 
@@ -67,37 +67,31 @@ export class TrainingService {
   }
 
   completeExercise() {
-    if(this.runningExercise) {
+    this.store.select(fromTraining.getActiveExercises).pipe(take(1)).subscribe(ex => {
+
       this.addDataToDatabase({
-        ...this.runningExercise,
+        ...ex,
         date: new Date(),
-        state: 'completed'
+        state: 'completed',
       });
-    }
 
     // this.runningExercise = null;
     // this.exerciseChanged.next(null);
     this.store.dispatch(new Training.StopTraining());
+  });
   }
 
   cancelExercise(progress: number) {
-    if(this.runningExercise) {
+    this.store.select(fromTraining.getActiveExercises).pipe(take(1)).subscribe(ex => {
       this.addDataToDatabase({
-        ...this.runningExercise,
-        duration: this.runningExercise.duration * (progress / 100),
-        calories: this.runningExercise.calories * (progress / 100),
+        ...ex,
+        duration: ex.duration * (progress / 100),
+        calories: ex.calories * (progress / 100),
         date: new Date(),
         state: 'cancelled'
       });
-    }
-
-    // this.runningExercise = null;
-    // this.exerciseChanged.next(null);
-    this.store.dispatch(new Training.StopTraining());
-  }
-
-  getRunningExercise() {
-    return {...this.runningExercise};
+      this.store.dispatch(new Training.StopTraining());
+    });
   }
 
   fetchCompletedOrCancelledExercises() {

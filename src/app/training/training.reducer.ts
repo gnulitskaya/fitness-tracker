@@ -12,7 +12,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 export interface TrainingState {
   availableExercises: Exercise[],
   finishedExercises: Exercise[],
-  activeExercises: Exercise[],
+  activeExercises: Exercise,
 }
 
 //our app state doesnt know about the training state,
