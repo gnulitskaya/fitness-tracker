@@ -7,6 +7,7 @@ import {
 } from './training.actions';
 import {Exercise} from "./exercise.module";
 import * as fromRoot from '../app.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface TrainingState {
   availableExercises: Exercise[],
@@ -29,7 +30,7 @@ const initialState: TrainingState = {
 }
 
 //dispatch actions to change the store
-export function authReducer(state = initialState, action: TrainingActions) {
+export function trainingReducer(state = initialState, action: TrainingActions) {
   //return a new state - return state;
   switch (action.type) {
     case SET_AVAILABLE_TRAININGS:
@@ -60,6 +61,9 @@ export function authReducer(state = initialState, action: TrainingActions) {
   }
 }
 
-export const getAvailableExercises = (state: TrainingState) => state.availableExercises;
-export const getFinishedExercises = (state: TrainingState) => state.finishedExercises;
-export const getActiveExercises = (state: TrainingState) => state.activeExercises;
+export const getTrainingState = createFeatureSelector<TrainingState>('training');
+
+export const getAvailableExercises = createSelector(getTrainingState, (state: TrainingState) => state.availableExercises);
+export const getFinishedExercises = createSelector(getTrainingState, (state: TrainingState) => state.finishedExercises);
+export const getActiveExercises = createSelector(getTrainingState, (state: TrainingState) => state.activeExercises);
+
