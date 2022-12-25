@@ -1,28 +1,9 @@
 # FitnessTracker
 
+http://fitness-tracker.gnulitskaya.ru/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
+![screencapture-fitness-tracker-gnulitskaya-ru-training-2022-12-25-19_03_21](https://user-images.githubusercontent.com/63544167/209474834-9fb4013a-b301-4dad-abb5-f931de213349.png)
 
-## Development server
+![screencapture-fitness-tracker-gnulitskaya-ru-training-2022-12-25-19_03_41](https://user-images.githubusercontent.com/63544167/209474835-93476451-5ae4-4263-8f95-cdc6cc4d5573.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![screencapture-fitness-tracker-gnulitskaya-ru-training-2022-12-25-19_03_54](https://user-images.githubusercontent.com/63544167/209474836-568a6018-5855-4fd4-8c3d-e2e6f7a95d96.png)
